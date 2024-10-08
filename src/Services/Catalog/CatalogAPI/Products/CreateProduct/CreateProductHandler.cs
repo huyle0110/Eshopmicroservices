@@ -1,13 +1,19 @@
 ﻿using BuildingBlocks.CQRS;
 using CatalogAPI.Models;
 
-
 namespace CatalogAPI.Products.CreateProduct
 {
 
     public record CreateProductCommand(string Name, List<string> Category, string Description, string ImageFile, decimal Price) 
             : ICommand<CreateProductResult>;
 
+    public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+    {
+        public CreateProductCommandValidator()
+        {
+            RuleFor(x => x.Name).NotEmpty().WithMessage("Name is required");
+        }
+    }
     public record CreateProductResult(Guid id);
     internal class CreateProductCommandHandler(IDocumentSession session) : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
