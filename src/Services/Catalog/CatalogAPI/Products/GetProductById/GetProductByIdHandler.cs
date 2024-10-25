@@ -1,4 +1,8 @@
-﻿namespace Catalog.API.Products.GetProductById;
+﻿using BuildingBlocks.CQRS;
+using Catalog.API.Exceptions;
+using CatalogAPI.Models;
+
+namespace Catalog.API.Products.GetProductById;
 
 public record GetProductByIdQuery(Guid Id) : IQuery<GetProductByIdResult>;
 public record GetProductByIdResult(Product Product);

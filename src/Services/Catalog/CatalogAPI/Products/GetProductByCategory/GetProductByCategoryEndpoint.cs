@@ -1,4 +1,6 @@
 ﻿
+using CatalogAPI.Models;
+
 namespace Catalog.API.Products.GetProductByCategory;
 
 //public record GetProductByCategoryRequest();
